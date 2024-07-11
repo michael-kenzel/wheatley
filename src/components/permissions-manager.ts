@@ -6,7 +6,6 @@ import { M } from "../utils/debugging-and-logging.js";
 import { HOUR } from "../common.js";
 import { BotComponent } from "../bot-component.js";
 import { Wheatley } from "../wheatley.js";
-import { unwrap } from "../utils/misc.js";
 
 type permissions_entry = {
     allow?: bigint[];

@@ -259,7 +259,7 @@ export default class Purge extends BotComponent {
         start: string,
         end: string,
         expect_this_channel = false,
-        filter = (message: Discord.Message) => true,
+        filter = (_message: Discord.Message) => true,
     ) {
         M.log("Received purge range command");
         const [start_channel_id, start_message_id] = this.parse_url_or_snowflake(start);

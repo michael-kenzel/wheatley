@@ -3,12 +3,10 @@ import * as Discord from "discord.js";
 import { strict as assert } from "assert";
 
 import { M } from "../utils/debugging-and-logging.js";
-import { colors } from "../common.js";
 import { BotComponent } from "../bot-component.js";
-import { Wheatley, create_error_reply } from "../wheatley.js";
+import { Wheatley } from "../wheatley.js";
 import { TextBasedCommandBuilder } from "../command-abstractions/text-based-command-builder.js";
 import { TextBasedCommand } from "../command-abstractions/text-based-command.js";
-import { build_description } from "../utils/strings.js";
 
 export default class Shortcuts extends BotComponent {
     static override get is_freestanding() {

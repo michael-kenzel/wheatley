@@ -2,8 +2,6 @@ import * as Discord from "discord.js";
 import * as mongo from "mongodb";
 import PromClient from "prom-client";
 
-import { EventEmitter } from "events";
-
 import { strict as assert } from "assert";
 
 import { M } from "../../utils/debugging-and-logging.js";

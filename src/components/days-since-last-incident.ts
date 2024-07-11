@@ -72,7 +72,7 @@ export default class DaysSinceLastIncident extends BotComponent {
         }, MINUTE);
     }
 
-    handle_incident(moderation: moderation_entry) {
+    handle_incident(_moderation: moderation_entry) {
         (async () => {
             await this.update_or_send_if_needed();
         })().catch(this.wheatley.critical_error);
