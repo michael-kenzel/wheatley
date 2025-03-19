@@ -2,19 +2,14 @@
 
 FROM node:current-alpine
 
-RUN --mount=type=bind,source=./package.json,target=package.json \
-    --mount=type=bind,source=./package-lock.json,target=package-lock.json \
-    --mount=type=cache,target=/root/.npm \
-    npm ci
+WORKDIR /wheatley/bot
 
-RUN adduser -s /bin/bash -D wheatley;echo 'wheatley:wheatley' | chpasswd
+COPY ./package.json ./package-lock.json .
 
-USER wheatley
-
-WORKDIR /home/wheatley/bot
+RUN npm ci
 
 COPY . .
 
 RUN npm run build
 
-CMD ["node", "build/src/main.js"]
+ENTRYPOINT ["node", "build/src/main.js"]

@@ -1,0 +1,33 @@
+name: wheatley-devcontainer
+
+services:
+  app:
+    build:
+      # image: wheatley_devcontainer_app
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ../..:/workspaces:cached
+    depends_on:
+      - db
+
+    # command:
+    #   - sh -c 'while sleep 3600; do :; done'
+
+    # network_mode: service:db
+
+  db:
+    image: mongo:latest
+    restart: unless-stopped
+    volumes:
+      - ../docker/db/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+      - ../docker/db/mongod.conf:/etc/mongod.conf:ro
+      - mongodb-data:/data/db
+
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=password
+      - MONGO_INITDB_DATABASE=wheatley
+
+volumes:
+  mongodb-data:
