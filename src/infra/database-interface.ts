@@ -23,6 +23,7 @@ import {
 import { wheatley_database_info } from "./schemata/wheatley.js";
 import { pin_archive_entry, pin_entry } from "./schemata/pins.js";
 import { user_role_entry } from "./schemata/user_roles.js";
+import { github_association_entry } from "./schemata/github.js";
 
 export class WheatleyDatabase {
     private readonly mutex = new Mutex();
@@ -130,4 +131,5 @@ export type WheatleyDatabaseProxy = WheatleyDatabase & {
     pins: mongo.Collection<pin_entry>;
     pin_archive: mongo.Collection<pin_archive_entry>;
     user_roles: mongo.Collection<user_role_entry>;
+    github_associations: github_association_entry;
 };

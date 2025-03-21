@@ -6,6 +6,7 @@
     "type": "module",
     "dependencies": {
         "@discordjs/rest": "^2.4.2",
+        "@octokit/auth-oauth-device": "^7.1.4",
         "@sentry/node": "^8.47.0",
         "@types/stack-trace": "^0.0.33",
         "any-ascii": "^0.3.2",

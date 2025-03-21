@@ -59,6 +59,10 @@ export type wheatley_auth = {
     mongo?: wheatley_database_credentials;
     sentry?: string;
     virustotal?: string;
+    github?: {
+        client_id: string,
+        client_secret: string
+    },
     metrics?: {
         port: number;
         hostname: string;
@@ -72,6 +76,7 @@ function drop_token({
     mongo,
     sentry,
     virustotal,
+    github,
     metrics,
 }: wheatley_auth): Omit<wheatley_auth, "token"> {
     return {
@@ -81,6 +86,7 @@ function drop_token({
         mongo,
         sentry,
         virustotal,
+        github,
         metrics,
     };
 }
@@ -195,6 +201,8 @@ const roles_map = {
     jedi_council: "1138950835208990750",
     herald: "1095555811536797787",
     linked_github: "1080596526478397471",
+    bot_contributor: "1138995379803795547",
+    wiki_contributor: "1272262757747654718",
 };
 
 const skill_roles_map = {
