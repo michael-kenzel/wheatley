@@ -687,10 +687,15 @@ export class Wheatley {
     }
 
     async migrate_db(database: WheatleyDatabase) {
-        const collection_info = await database.list_collections();
-        if (!collection_info.has("component_state") && collection_info.has("wheatley")) {
+        if (!this.db) {
+            return;
+        }
+
+        const component_state = database.get_collection("component_state", { create: false });
+        const wheatley = database.get_collection("wheatley", { create: false });
+        if (!component_state && wheatley) {
             const component_state = database.get_collection("component_state");
-            const bot_singleton = await database.get_collection("wheatley").findOne({ id: "main" });
+            const bot_singleton = await wheatley.findOne({ id: "main" });
             if (bot_singleton) {
                 M.log("migrating database...");
                 await component_state.insertOne({

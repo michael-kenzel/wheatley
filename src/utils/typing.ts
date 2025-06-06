@@ -23,3 +23,8 @@ export type Arr = readonly unknown[];
 export type Iterables<Ts> = {
     [K in keyof Ts]: Iterable<Ts[K]>;
 };
+
+// see <https://stackoverflow.com/a/49725198>
+export type RequireAtLeastOne<T> = {
+    [k in keyof T]: Required<Pick<T, k>> & Partial<Pick<T, Exclude<keyof T, k>>>;
+}[keyof T];
